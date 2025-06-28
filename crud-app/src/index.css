@@ -36,8 +36,7 @@
   padding: 20px;
 }
 
-
- /* blog-preview styles   */
+/* blog-preview styles   */
 .blog-preview {
   padding: 10px 16px;
   margin: 20px 0;
@@ -46,7 +45,18 @@
 
 .blog-preview:hover {
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+  font-style: italic;
 }
+
+.blog-list h2:hover{
+  color: blueviolet;
+}
+  
+
+.blog-preview h2:hover{
+  color:#0df415;
+}
+
 .blog-preview h2 {
   font-size: 20px;
   color: blueviolet;
