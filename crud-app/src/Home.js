@@ -25,7 +25,7 @@
 // export default Home;
 
 import { useState } from "react";
-
+import BlogList from "./BlogList";
 const Home = () => {
 //   // let name = 'Mario';
 //   // const handleClick = () => {
@@ -51,12 +51,9 @@ const Home = () => {
       <button onClick={handleClick}>Click </button> */}
       
        {/* Using map to iterate over the array of objects */}
-      {blogs.map((blog) => (
-        <div className="blog-preview" key={blog.id}>
-          <h2>{blog.title}</h2>
-          <p>Written By {blog.author}</p>
-        </div>
-      ))}
+      <BlogList blogs={blogs} title = "All Blogs!"/>
+      {/* Here we use props to pass data from parent component to child component. */}
+
       
     </div>
   );
