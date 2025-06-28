@@ -60,21 +60,30 @@ const Home = () => {
     },
   ]);
 
+  const [name, setName] = useState("Eshwar");
+
   const handleDelete = (id) => {
     const newBlogs = blogs.filter((blog) => blog.id !== id);
     setBlogs(newBlogs);
     console.log(`Deleted blog with id: ${id}`);
   };
 
-  useEffect(() => {
-    console.log("useEffect ran");
-    console.log(blogs);
-  }); // This will run every time the blogs state changes
   // useEffect(() => {
   //   console.log("useEffect ran");
-  //   console.log(name, age);
-  // }, [name, age]); // This will run every time the name or age state changes
+  //   console.log(blogs);
+  // }); // This will run every time the blogs state changes
 
+  // useEffect(() => {
+  //   console.log("useEffect ran for the first time");
+  //   console.log(blogs);
+  // }, []); // This will run only once when the component mounts
+
+  //Adding useEffect Dependencies
+  useEffect(() => {
+    console.log("useEffect ran");
+    console.log(name);
+  }, [name]);
+  // This will run every time the name state changes
 
   return (
     <div className="home">
@@ -89,6 +98,8 @@ const Home = () => {
         blogs={blogs.filter((blog) => blog.author === "Mario")}
         title="Mario's blogs"
       /> */}
+      <button onClick={() => setName("Virat Kohli")}>Idol Name</button>
+      <p>{name}</p>
     </div>
   );
 };
