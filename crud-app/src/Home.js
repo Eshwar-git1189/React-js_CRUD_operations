@@ -24,7 +24,7 @@
 
 // export default Home;
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BlogList from "./BlogList";
 const Home = () => {
   //   // let name = 'Mario';
@@ -65,6 +65,17 @@ const Home = () => {
     setBlogs(newBlogs);
     console.log(`Deleted blog with id: ${id}`);
   };
+
+  useEffect(() => {
+    console.log("useEffect ran");
+    console.log(blogs);
+  }); // This will run every time the blogs state changes
+  // useEffect(() => {
+  //   console.log("useEffect ran");
+  //   console.log(name, age);
+  // }, [name, age]); // This will run every time the name or age state changes
+
+
   return (
     <div className="home">
       {/* <h2>Home Page</h2>
