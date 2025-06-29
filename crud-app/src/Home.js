@@ -24,7 +24,7 @@
 
 // export default Home;
 
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import BlogList from "./BlogList";
 
 const Home = () => {
@@ -42,6 +42,7 @@ const Home = () => {
   //   }
   const [blogs, setBlogs] = useState(null);
   const [isPending, setIsPending] = useState(true);
+  const [error, setError] = useState(null);
 
   // const [name, setName] = useState("Eshwar");
 
@@ -72,10 +73,18 @@ const Home = () => {
     setTimeout(() => {
       fetch("http://localhost:8000/blogs")
         .then((res) => {
+          if (!res.ok) {
+            throw Error("Could not fetch the data for that resource");
+          }
           return res.json();
         })
         .then((data) => {
           setBlogs(data);
+          setIsPending(false);
+          setError(null);
+        })
+        .catch((err) => {
+          setError(err.message);
           setIsPending(false);
         });
     }, 1000);
@@ -90,7 +99,7 @@ const Home = () => {
       {/* Using map to iterate over the array of objects */}
 
       {/* {blogs && <BlogList blogs={blogs} title="All Blogs!" handleDelete={handleDelete} />} */}
-
+      {error && <div>{error}</div>}
       {isPending && <div>Loading... </div>}
       {blogs && <BlogList blogs={blogs} title="All Blogs!" />}
 
