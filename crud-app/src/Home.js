@@ -26,6 +26,7 @@
 
 import { useEffect, useState } from "react";
 import BlogList from "./BlogList";
+
 const Home = () => {
   //   // let name = 'Mario';
   //   // const handleClick = () => {
@@ -39,34 +40,16 @@ const Home = () => {
   //     setName('Luigi');
   //     setAge(30);
   //   }
-  const [blogs, setBlogs] = useState([
-    {
-      title: "My new website",
-      body: "Lorem ipsum dolor sit amet",
-      author: "Mario",
-      id: 1,
-    },
-    {
-      title: "Welcome party!",
-      body: "Lorem ipsum dolor sit amet",
-      author: "Yoshi",
-      id: 2,
-    },
-    {
-      title: "Web dev top tips",
-      body: "Lorem ipsum dolor sit amet",
-      author: "Mario",
-      id: 3,
-    },
-  ]);
+  const [blogs, setBlogs] = useState(null);
+  const [isPending, setIsPending] = useState(true);
 
-  const [name, setName] = useState("Eshwar");
+  // const [name, setName] = useState("Eshwar");
 
-  const handleDelete = (id) => {
-    const newBlogs = blogs.filter((blog) => blog.id !== id);
-    setBlogs(newBlogs);
-    console.log(`Deleted blog with id: ${id}`);
-  };
+  // const handleDelete = (id) => {
+  //   const newBlogs = blogs.filter((blog) => blog.id !== id);
+  //   setBlogs(newBlogs);
+  //   console.log(`Deleted blog with id: ${id}`);
+  // };
 
   // useEffect(() => {
   //   console.log("useEffect ran");
@@ -79,11 +62,24 @@ const Home = () => {
   // }, []); // This will run only once when the component mounts
 
   //Adding useEffect Dependencies
-  useEffect(() => {
-    console.log("useEffect ran");
-    console.log(name);
-  }, [name]);
+  // useEffect(() => {
+  //   console.log("useEffect ran");
+  //   console.log(name);
+  // }, [name]);
   // This will run every time the name state changes
+
+  useEffect(() => {
+    setTimeout(() => {
+      fetch("http://localhost:8000/blogs")
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          setBlogs(data);
+          setIsPending(false);
+        });
+    }, 1000);
+  }, []);
 
   return (
     <div className="home">
@@ -92,14 +88,20 @@ const Home = () => {
       <button onClick={handleClick}>Click </button> */}
 
       {/* Using map to iterate over the array of objects */}
-      <BlogList blogs={blogs} title="All Blogs!" handleDelete={handleDelete} />
+
+      {/* {blogs && <BlogList blogs={blogs} title="All Blogs!" handleDelete={handleDelete} />} */}
+
+      {isPending && <div>Loading... </div>}
+      {blogs && <BlogList blogs={blogs} title="All Blogs!" />}
+
       {/* Here we use props to pass data from parent component to child component. */}
       {/* <BlogList
         blogs={blogs.filter((blog) => blog.author === "Mario")}
         title="Mario's blogs"
       /> */}
-      <button onClick={() => setName("Virat Kohli")}>Idol Name</button>
-      <p>{name}</p>
+
+      {/* <button onClick={() => setName("Virat Kohli")}>Idol Name</button>
+      <p>{name}</p> */}
     </div>
   );
 };
