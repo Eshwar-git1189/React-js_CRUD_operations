@@ -76,14 +76,14 @@
   margin: 20px 0;
 }
 
-/* .blog-details button{
+.blog-details button{
   background: #0df415;
   color: #fff;
   border: 0;
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
-} */
+} 
 
 /* create new blog form */
 .create {
@@ -115,4 +115,9 @@
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
+}
+
+/*Not Found Page*/
+.not-found a{
+  text-decoration: none;
 }

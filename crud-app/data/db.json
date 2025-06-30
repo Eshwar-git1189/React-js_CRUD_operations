@@ -1,28 +1,10 @@
 {
   "blogs": [
     {
-      "title": "My new website",
-      "body": "Lorem ipsum dolor sit amet",
-      "author": "Mario",
-      "id": "1"
-    },
-    {
       "title": "Welcome party!",
       "body": "Lorem ipsum dolor sit amet",
       "author": "Yoshi",
       "id": "2"
-    },
-    {
-      "id": "02f5",
-      "title": "Neww ",
-      "body": "Lorenmmvko ",
-      "author": "mario"
-    },
-    {
-      "id": "e4dd",
-      "title": "CSE",
-      "body": "React is JavaScript library",
-      "author": "yoshi"
     }
   ]
 }
