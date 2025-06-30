@@ -48,17 +48,19 @@
   font-style: italic;
 }
 
-.blog-list h2:hover{
+.blog-list h2:hover {
   color: blueviolet;
 }
-  
 
-.blog-preview h2:hover{
-  color:#0df415;
+.blog-preview h2:hover {
+  color: #0df415;
 }
 
 .blog-preview h2 {
   font-size: 20px;
   color: blueviolet;
   margin-bottom: 8px;
+}
+.blog-preview a {
+  text-decoration: none;
 }
