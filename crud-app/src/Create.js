@@ -1,9 +1,12 @@
 import { useState } from "react";
+import {useNavigate} from "react-router-dom";
 const Create = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [author, setAuthor] = useState("mario");
   const [isPending, setIsPending] = useState(false);
+  const navigate = useNavigate();// useHistory hook is used to programmatically navigate
+  // after the blog is added
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +23,10 @@ const Create = () => {
       console.log("New blog added");
       setIsPending(false);
       // Reset the form fields after submission
+      navigate("/"); // Navigate to the home page after adding the blog
     });
+    // navigate(-1); // Navigate back to the previous page
+    // or you can use navigate('/path') to navigate to a specific route
   };
 
   return (
