@@ -12,7 +12,7 @@ const BlogDetails = () => {
   console.log("Full fetch URL:", "http://localhost:8000/blogs/" + id);
   console.log("Fetched blog:", blog);
 
-  return (
+  return ( 
     <div className="blog-details">
       {isPending && <div>Loading...</div>}
       {error && <div>{error} </div>}
